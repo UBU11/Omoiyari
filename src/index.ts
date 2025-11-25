@@ -14,16 +14,14 @@ const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
-// type clientType = {
-//   readyClient: Client<boolean>
-// }
+
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.once(Events.ClientReady, (readyClient) => {
   console.log(`Logged in as ${readyClient.user.tag}`);
 });
 
-client.commands = new Collection();
+client.commands = new Collection(); //TS property type eror
 
 const foldersPath = path.join(__dirname, "commands");
 const commandFolders = fs.readdirSync(foldersPath);
